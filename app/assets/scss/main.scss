@@ -1,0 +1,64 @@
+@use "modern-normalize";
+@import url('@/assets/fonts/style.css');
+
+p{margin: 0;}
+h1,h2,h3,h4,h5{
+  margin: 0;
+  font-weight: inherit;
+}
+
+a{
+  text-decoration: none;
+  color: inherit;
+}
+
+button{
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+}
+
+/* Полный сброс для инпута с datalist */
+.datalist-clean {
+  /* Сброс браузерных стилей */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  /* Убираем все браузерные иконки и кнопки */
+  &::-webkit-calendar-picker-indicator,
+  &::-webkit-list-button,
+  &::-webkit-clear-button,
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button,
+  &::-webkit-search-cancel-button,
+  &::-webkit-search-decoration {
+    display: none;
+    -webkit-appearance: none;
+  }
+
+  /* Базовые стили */
+  border: 2px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 12px 16px;
+  font-size: 16px;
+  width: 100%;
+  background: #fff;
+  font-family: inherit;
+
+  /* Состояния */
+  &:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+  }
+
+  &:hover {
+    border-color: #b0b0b0;
+  }
+}
+
+ol{
+  margin: 0;
+  padding: 0 0 0 18px;
+}

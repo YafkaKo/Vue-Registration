@@ -46,12 +46,22 @@ const getStepDescription = (step: string | string[]): string => {
   font-family: "Spoof Trial Bold";
   margin-bottom: 8px;
   font-size: 40px;
+  @media (max-width: 768px) {
+    font-size: 32px;
+  }
+  @media(max-width: 380px){
+    font-size: 26px;
+      }
 }
 .subtitle {
   font-size: 20px;
   line-height: 130%;
   margin-bottom: 32px;
   font-size: 20px;
+  @media (max-width: 768px) {
+    font-size: 16px;
+    margin-bottom: 16px;
+  }
 }
 
 .steps {
@@ -63,6 +73,10 @@ const getStepDescription = (step: string | string[]): string => {
   line-height: 130%;
   gap: 56px;
   margin-bottom: 32px;
+  @media(max-width: 768px){
+    font-size: 36px;
+    margin-bottom: 16px;
+      }
   .step.active {
     color: $accent-violet;
   }

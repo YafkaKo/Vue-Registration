@@ -15,5 +15,11 @@ footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  text-align: center;
+}
+@media(max-width: 768px){
+  footer{
+  font-size: 12px;
+  }
 }
 </style>

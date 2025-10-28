@@ -54,6 +54,9 @@
   .social {
     display: flex;
     justify-content: space-between;
+    @media(max-width: 768px){
+      flex-wrap: wrap;
+    }
     .social-item {
       &.tel {
         color: #29a9eb;

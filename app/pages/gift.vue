@@ -39,20 +39,33 @@ import AccentButton from "~/components/ui/AccentButton.vue";
   flex-direction: column;
   align-items: start;
   text-align: start;
+  @media(max-width: 768px){
+    padding: 24px 12px;
+      }
   .close-button {
     position: absolute;
-    top: 20px;
-    right: 24px;
+    top: 10px;
+    right: 12px;
+    @media(max-width: 768px){
+    font-size: 16px;
+    padding: 6px 0;
+    }
   }
   .gift-title {
     font-family: "Spoof Trial Medium";
     font-size: 28px;
     margin-bottom: 4px;
+    @media(max-width: 500px){
+    font-size: 24px;
+      }
   }
   .gift-subtitle {
     font-size: 16px;
     color: $light-dark;
     margin-bottom: 32px;
+    @media(max-width: 768px){
+    margin-bottom: 16px;
+      }
   }
   .gift-list-title {
     font-family: "Spoof Trial Bold";
@@ -64,6 +77,9 @@ import AccentButton from "~/components/ui/AccentButton.vue";
     font-size: 16px;
     line-height: 130%;
     margin-bottom: 32px;
+    @media(max-width: 768px){
+    margin-bottom: 16px;
+      }
   }
   .gift-link {
     width: 100%;

@@ -40,17 +40,14 @@ const goBack = () => {
   font-family: "PP Neue Montreal Medium", sans-serif;
   font-size: 20px;
   line-height: 130%;
-  .top-button {
-    width: 100%;
-    background-color: #9747ff;
-    border-radius: 12px;
-    padding: 12px 0;
-    color: #fff;
-  }
   .bottom-button {
     color: $accent-violet;
     padding: 20px 0;
     width: 100%;
+    @media(max-width: 768px){
+    font-size: 16px;
+    padding: 12px 0;
+  }
   }
 }
 </style>

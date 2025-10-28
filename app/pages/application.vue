@@ -21,7 +21,6 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
-  // Очищаем интервал при размонтировании компонента
   if (intervalId) {
     clearInterval(intervalId)
   }
@@ -66,29 +65,43 @@ body.special-page-active {
   flex-grow: 1;
   height: 100%;
   max-width: 828px;
+  width: 100%;
   padding: 48px 60px;
   color: #fff;
   text-align: center;
+  @media(max-width: 768px){
+    padding: 0;
+      }
   &-title{
 font-family: 'Spoof Trial Medium';
     font-size: 40px;
     margin-bottom: 8px;
+    @media(max-width: 768px){
+    font-size: 32px;
+    padding: 6px 0;
+      }
   }
   &-subtitle{
     font-size: 20px;
     margin-bottom: 48px;
-  }
-  &-way{
-    margin: 0 24px;
-    display: flex;
-    justify-content: space-between;
+    @media(max-width: 768px){
+    margin-bottom: 24px;
+    font-size: 16px;
+      }
   }
 }
 .application-way{
     display: grid;
-  grid-template-columns: 345px 243px 40px;
+  // grid-template-columns: 345px 243px 40px;
+  grid-template-columns: 50% auto 40px;
+  width: calc(100% - 48px - 32px);
   gap: 16px;
-    font-family: 'PP Neue Montreal Medium';
+  font-family: 'PP Neue Montreal Medium';
+  margin: 0 auto;
+  @media(max-width: 500px){
+      gap: 4px;
+      width: 100%;
+ }
   .way-item{
     line-height: 100%;
         &-box{
@@ -99,6 +112,11 @@ font-family: 'Spoof Trial Medium';
       height: 40px;
       border-radius: 28px;
       background-color: $secondary-dark;
+      @media(max-width: 600px){
+        width: 30px;
+        height: 30px;
+        border-radius: 14px;
+      }
     }
         &:first-child{
           .way-item-box{
@@ -115,17 +133,27 @@ font-family: 'Spoof Trial Medium';
             right: 0;
             top: calc(50% - 2px);
             border-radius: 5px;
+            @media(max-width: 600px){
+              width: calc(100% - 28px);
+            }
           }
 
           .way-item-box::after{
             position: absolute;
             content: 'Анкета отправлена';
+
             left: 56px;
             width: max-content;
             padding: 4px 8px;
             background-color: $accent-violet;
             border-radius: 16px;
             z-index: 2;
+            @media(max-width: 560px){
+              font-size: 12px;
+              padding: 2px 4px;
+              left: calc(35% - 24px);
+              top: -14px;
+                }
           }
         }
         &:first-child::before,&:first-child::after,&:nth-child(2)::before,&:nth-child(2)::after{
@@ -139,10 +167,19 @@ font-family: 'Spoof Trial Medium';
         border-radius: 4px; /* Скругление углов */
         transform: translateY(-50%) rotate(-45deg);
         top: calc(50% + 8px);
+        @media(max-width: 600px){
+              width: 16px;
+              right: -2px;
+              top: calc(50% + 5px);
+            }
         }
         &:first-child::after,&:nth-child(2)::after{
         transform: translateY(-50%) rotate(45deg);
         top: calc(50% - 8px);
+        @media(max-width: 600px){
+              right: -2px;
+              top: calc(50% - 5px);
+            }
         }
 
         &:nth-child(2){
@@ -159,6 +196,9 @@ font-family: 'Spoof Trial Medium';
             right: 0;
             top: calc(50% - 2px);
             border-radius: 5px;
+            @media(max-width: 600px){
+              width: calc(100% - 28px);
+            }
           }
         }
   }
@@ -168,11 +208,18 @@ font-family: 'Spoof Trial Medium';
       position: absolute;
       content: 'Проверка';
       left: 56px;
+
       width: max-content;
       padding: 4px 8px;
       background-color: $secondary-dark;
       border-radius: 16px;
       z-index: 2;
+      @media(max-width: 560px){
+              font-size: 12px;
+              padding: 2px 4px;
+              left: calc(50% - 24px);
+              top: -14px;
+      }
     }
   }
 }

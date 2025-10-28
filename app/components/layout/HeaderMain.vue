@@ -47,4 +47,22 @@ header {
     }
   }
 }
+
+@media(max-width: 768px){
+  header{
+    padding: 10px 0;
+    .logo{
+      font-size: 30px;
+    }
+    .button-gift{
+      padding: 12px 8px;
+      font-size: 16px;
+      gap: 5px;
+      img{
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+}
 </style>

@@ -50,6 +50,10 @@ textarea {
   line-height: 130%;
   font-size: 16px;
   width: 100%;
+  @media(max-width: 768px){
+    font-size: 14px;
+    padding: 8px 12px;
+      }
   &::placeholder {
     opacity: 50%;
   }
@@ -91,5 +95,8 @@ textarea {
 .inputs-sharing {
   display: flex;
   gap: 16px;
+  @media(max-width: 500px){
+    flex-wrap: wrap;
+      }
 }
 </style>

@@ -27,11 +27,15 @@ const suggestions = ["Москва", "Санкт-Петербург", "Ново�
 <style lang="scss" scoped>
 .registration-modal {
   margin-bottom: 24px;
-  width: 542px;
+  max-width: 542px;
+  width: 100%;
   margin: 0 auto;
   background-color: #fff;
   border-radius: 24px;
   padding: 48px 24px;
+  @media(max-width: 768px){
+padding: 24px 12px;
+  }
 }
 
 .inputs {

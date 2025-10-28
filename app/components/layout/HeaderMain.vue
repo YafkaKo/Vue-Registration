@@ -11,8 +11,8 @@ const route = useRoute();
       to="/gift"
       class="button-gift"
     >
-      <img src="@/assets/images/gift.svg" alt="gift svg" />Подарок от
-      друга</NuxtLink
+      <img src="@/assets/images/gift.svg" alt="gift svg" /><span>Подарок от
+      друга</span></NuxtLink
     >
   </header>
 </template>
@@ -52,15 +52,14 @@ header {
   header{
     padding: 10px 0;
     .logo{
-      font-size: 30px;
+      font-size: 32px;
     }
     .button-gift{
-      padding: 12px 8px;
+      padding: 10px 12px;
       font-size: 16px;
       gap: 5px;
-      img{
-        width: 20px;
-        height: 20px;
+      span{
+        display: none;
       }
     }
   }

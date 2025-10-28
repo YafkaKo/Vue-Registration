@@ -19,7 +19,8 @@ footer {
 }
 @media(max-width: 768px){
   footer{
-  font-size: 12px;
+  flex-direction: column;
+  gap: 8px;
   }
 }
 </style>

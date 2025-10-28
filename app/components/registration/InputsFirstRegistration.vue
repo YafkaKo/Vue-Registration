@@ -12,8 +12,8 @@ import InputWithSuggestions from '../ui/InputWithSuggestions.vue'
 <template>
   <div class="inputs">
         <div class="inputs-sharing">
-          <InputWithSuggestions :suggestions="suggestions" name="NickName" id="NickName" placeholder="NickName*" />
-          <InputWithSuggestions :suggestions="suggestions" name="Name" id="Name" placeholder="Name*" />
+          <input type="text" name="NickName" id="NickName" placeholder="NickName*" />
+          <input type="text" name="Name" id="Name" placeholder="Name*" />
               </div>
           <input type="text" name="Female" id="Female" placeholder="Фамилия*"></input>
           <input type="email" name="Email" id="Email" placeholder="Email*">

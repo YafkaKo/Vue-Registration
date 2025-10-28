@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref } from "vue";
+import AccentButton from "~/components/ui/AccentButton.vue";
 
 onMounted(() => {
   document.body.classList.add("special-page-active");
@@ -9,7 +10,7 @@ onUnmounted(() => {
   document.body.classList.remove("special-page-active");
 });
 
-const isSuccess = ref(false)
+const isSuccess = ref(true)
 const setSuccess = () => {
   isSuccess.value = !isSuccess.value
 }
@@ -51,6 +52,11 @@ onUnmounted(() => {
         </div>
     </div>
     </div>
+    <div class="zagluxhka"></div>
+    <div v-if="isSuccess" class="bottom-buttons">
+      <AccentButton text="Показать инструкцию"/>
+      <button class="button-white">Я сам всё освою</button>
+    </div>
   </div>
 
 </template>
@@ -69,24 +75,29 @@ body.special-page-active {
   padding: 48px 60px;
   color: #fff;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  min-height: -webkit-fill-available;
   @media(max-width: 768px){
     padding: 0;
       }
+  .zagluxhka{
+    flex-grow: 1;
+  }
   &-title{
 font-family: 'Spoof Trial Medium';
     font-size: 40px;
     margin-bottom: 8px;
     @media(max-width: 768px){
-    font-size: 32px;
-    padding: 6px 0;
+    font-size: 18px;
       }
   }
   &-subtitle{
     font-size: 20px;
     margin-bottom: 48px;
     @media(max-width: 768px){
-    margin-bottom: 24px;
-    font-size: 16px;
+    margin-bottom: 32px;
+    font-size: 14px;
       }
   }
 }
@@ -98,10 +109,10 @@ font-family: 'Spoof Trial Medium';
   gap: 16px;
   font-family: 'PP Neue Montreal Medium';
   margin: 0 auto;
-  @media(max-width: 500px){
-      gap: 4px;
-      width: 100%;
- }
+  @media(max-width: 768px){
+      grid-template-columns: 1fr;
+      grid-template-rows: 80px 40px;
+                }
   .way-item{
     line-height: 100%;
         &-box{
@@ -112,11 +123,6 @@ font-family: 'Spoof Trial Medium';
       height: 40px;
       border-radius: 28px;
       background-color: $secondary-dark;
-      @media(max-width: 600px){
-        width: 30px;
-        height: 30px;
-        border-radius: 14px;
-      }
     }
         &:first-child{
           .way-item-box{
@@ -133,9 +139,14 @@ font-family: 'Spoof Trial Medium';
             right: 0;
             top: calc(50% - 2px);
             border-radius: 5px;
-            @media(max-width: 600px){
-              width: calc(100% - 28px);
-            }
+            @media(max-width: 768px){
+              width: 4px;
+              height: 43px;
+              bottom: 0;
+              left: 18px;
+              top: auto;
+              right: 0;
+              }
           }
 
           .way-item-box::after{
@@ -148,12 +159,6 @@ font-family: 'Spoof Trial Medium';
             background-color: $accent-violet;
             border-radius: 16px;
             z-index: 2;
-            @media(max-width: 560px){
-              font-size: 12px;
-              padding: 2px 4px;
-              left: calc(35% - 24px);
-              top: -14px;
-                }
           }
         }
         &:first-child::before,&:first-child::after,&:nth-child(2)::before,&:nth-child(2)::after{
@@ -167,19 +172,23 @@ font-family: 'Spoof Trial Medium';
         border-radius: 4px; /* Скругление углов */
         transform: translateY(-50%) rotate(-45deg);
         top: calc(50% + 8px);
-        @media(max-width: 600px){
-              width: 16px;
-              right: -2px;
-              top: calc(50% + 5px);
-            }
+        @media(max-width: 768px){
+          top: auto;
+          right: auto;
+          bottom: 5px;
+          left: 0px;
+          transform: rotate(45deg);
+        }
         }
         &:first-child::after,&:nth-child(2)::after{
         transform: translateY(-50%) rotate(45deg);
         top: calc(50% - 8px);
-        @media(max-width: 600px){
-              right: -2px;
-              top: calc(50% - 5px);
-            }
+        @media(max-width: 768px){
+          top: auto;
+          right: auto;
+          left: 15px;
+          transform: rotate(-45deg);
+        }
         }
 
         &:nth-child(2){
@@ -196,9 +205,6 @@ font-family: 'Spoof Trial Medium';
             right: 0;
             top: calc(50% - 2px);
             border-radius: 5px;
-            @media(max-width: 600px){
-              width: calc(100% - 28px);
-            }
           }
         }
   }
@@ -214,13 +220,19 @@ font-family: 'Spoof Trial Medium';
       background-color: $secondary-dark;
       border-radius: 16px;
       z-index: 2;
-      @media(max-width: 560px){
-              font-size: 12px;
-              padding: 2px 4px;
-              left: calc(50% - 24px);
-              top: -14px;
-      }
     }
+  }
+}
+
+@media(max-width: 768px){
+  .way-item{
+    &:last-child{
+display: none;
+    }
+    &:nth-child(2)::after,&:nth-child(2)::before,&:nth-child(2) .way-item-box::before{
+      display: none;
+    }
+
   }
 }
 
@@ -231,6 +243,50 @@ font-family: 'Spoof Trial Medium';
   .way-item:nth-child(2)::before,
   .way-item:last-child .way-item-box{
     background: $accent-violet;
+  }
+  @media(max-width: 768px){
+    .way-item:last-child{
+      display: block;
+      .way-item-box::before{
+      position: absolute;
+      content: 'Принята';
+      left: 118px;
+
+      width: max-content;
+      padding: 4px 8px;
+      background-color: $accent-violet;
+      border-radius: 16px;
+      z-index: 2;
+      }
+    }
+          .way-item:nth-child(2){
+            display: none;
+
+  }
+        }
+}
+
+.bottom-buttons{
+  margin: 0 auto;
+  display: flex;
+  gap: 30px;
+  width: calc(256px + 256px + 30px);
+  @media(max-width: 768px){
+      flex-direction: column;
+      width: 100%;
+    }
+  .button-white{
+  font-family: "PP Neue Montreal Medium", sans-serif;
+  font-size: 20px;
+  line-height: 130%;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 12px 0;
+  color: $accent-violet;
+    @media(max-width: 768px){
+    font-size: 16px;
+      }
   }
 }
 </style>

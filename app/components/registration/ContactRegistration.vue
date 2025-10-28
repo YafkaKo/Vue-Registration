@@ -45,18 +45,21 @@
     font-size: 24px;
     line-height: 130%;
     margin-bottom: 8px;
+    @media (max-width: 768px) {
+      font-size: 18px;
+    }
   }
   .contact-subtitle {
     font-size: 16px;
     line-height: 130%;
     margin-bottom: 16px;
+    @media (max-width: 768px) {
+      font-size: 14px;
+    }
   }
   .social {
     display: flex;
     justify-content: space-between;
-    @media(max-width: 768px){
-      flex-wrap: wrap;
-    }
     .social-item {
       &.tel {
         color: #29a9eb;
@@ -69,16 +72,25 @@
       display: flex;
       align-items: center;
       gap: 10px;
+      @media(max-width: 768px){
+      justify-content: center;
+                }
       img {
         width: 24px;
         height: 24px;
       }
       p {
+        @media (max-width: 768px) {
+          display: none;
+        }
         font-family: "PP Neue Montreal Medium", sans-serif;
         font-size: 20px;
         line-height: 130%;
       }
       div {
+        @media (max-width: 768px) {
+          display: none;
+        }
         margin-left: auto;
         font-size: 24px;
       }
@@ -92,6 +104,9 @@
   font-size: 14px;
   line-height: 130%;
   margin-bottom: 32px;
+  @media (max-width: 768px) {
+    font-size: 12px;
+  }
   a {
     color: $accent-violet;
   }

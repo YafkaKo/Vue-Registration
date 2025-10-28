@@ -34,7 +34,7 @@ const suggestions = ["Москва", "Санкт-Петербург", "Ново�
   border-radius: 24px;
   padding: 48px 24px;
   @media(max-width: 768px){
-padding: 24px 12px;
+padding: 24px 16px 32px;
   }
 }
 

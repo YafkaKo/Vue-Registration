@@ -47,11 +47,8 @@ const getStepDescription = (step: string | string[]): string => {
   margin-bottom: 8px;
   font-size: 40px;
   @media (max-width: 768px) {
-    font-size: 32px;
+    font-size: 20px;
   }
-  @media(max-width: 380px){
-    font-size: 26px;
-      }
 }
 .subtitle {
   font-size: 20px;
@@ -60,7 +57,7 @@ const getStepDescription = (step: string | string[]): string => {
   font-size: 20px;
   @media (max-width: 768px) {
     font-size: 16px;
-    margin-bottom: 16px;
+    margin-bottom: 24px;
   }
 }
 
@@ -74,8 +71,9 @@ const getStepDescription = (step: string | string[]): string => {
   gap: 56px;
   margin-bottom: 32px;
   @media(max-width: 768px){
-    font-size: 36px;
-    margin-bottom: 16px;
+    font-size: 32px;
+    margin-bottom: 24px;
+    gap: 40px
       }
   .step.active {
     color: $accent-violet;
@@ -94,6 +92,10 @@ const getStepDescription = (step: string | string[]): string => {
     height: 1px;
     background: $teriary-dark;
     z-index: 1;
+    @media(max-width: 768px){
+      width: 24px;
+
+    }
   }
 }
 </style>

@@ -60,6 +60,9 @@ const goBack = () => {
     font-family: "PP Neue Montreal Medium";
     font-size: 24px;
     margin-bottom: 8px;
+    @media(max-width: 768px){
+      font-size: 20px;
+                }
   }
   .contact-subtitle {
     font-size: 16px;

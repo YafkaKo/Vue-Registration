@@ -18,7 +18,6 @@ const props = defineProps<{text:string}>()
   color: #fff;
     @media(max-width: 768px){
     font-size: 16px;
-    padding: 6px 0;
       }
 }
 </style>

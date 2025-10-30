@@ -5,6 +5,25 @@ const props = defineProps<{
   placeholder: string;
   label: string;
 }>();
+
+const placeholderLocal = ref(props.placeholder)
+
+const changeInputFile = (event:Event):void => {
+  const target = event.target as HTMLInputElement;
+  const files: FileList | null | undefined = target.files;
+  let fileNames:string[] = [];
+  if (!files || files.length === 0|| files ===undefined) {
+    return
+  }
+
+  for (let i = 0; i < files.length; i++) {
+    fileNames.push(files[i].name);
+  }
+
+  placeholderLocal.value = fileNames.join(', ');
+  console.log(placeholderLocal.value);
+}
+
 </script>
 
 <template>
@@ -15,8 +34,10 @@ const props = defineProps<{
       :id="id"
       :placeholder="placeholder"
       accept=".jpg, .jpeg, .png"
+      @change="changeInputFile"
     />
-    <label class="label-file" for="StudyBook">{{ placeholder }}
+    <label class="label-file" for="StudyBook">
+      <div>{{ placeholderLocal }}</div>
       <span ><img src="@/assets/images/screpka.svg" alt=""></span>
     </label>
       <p>{{ label }}</p>
@@ -26,7 +47,7 @@ const props = defineProps<{
 <style lang="scss" scoped>
 .input-with-icons-container{
     input{
-      opacity: 0;
+      opacity: 1;
       visibility: hidden;
       position: absolute;
       z-index: 2;

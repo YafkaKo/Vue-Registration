@@ -71,6 +71,10 @@ textarea {
   label {
     padding: 12px 48px 12px 16px;
   }
+  .btn-img-galochka{
+      transition: all 0.5s ease;
+
+  }
   .btn-img-galochka-reverse {
     transform: rotate(180deg);
   }
@@ -89,7 +93,7 @@ textarea {
     font-family: "PP Neue Montreal Medium", sans-serif;
     line-height: 130%;
     font-size: 16px;
-  }
+}
 }
 
 .inputs-sharing {

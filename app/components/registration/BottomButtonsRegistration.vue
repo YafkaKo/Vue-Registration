@@ -2,6 +2,7 @@
 import AccentButton from "../ui/AccentButton.vue";
 
 const props = defineProps<{ step: string | string[] }>();
+const emits = defineEmits(['changeStep'])
 const router = useRouter();
 const goBack = () => {
   if (window.history.state.back) {
@@ -10,16 +11,13 @@ const goBack = () => {
     router.push("/");
   }
 };
+
 </script>
 
 <template>
   <div class="buttons">
-    <nuxt-link
-      v-if="step !== '3'"
-      :to="step === '1' ? '/registration/2' : '/registration/3'"
-      ><AccentButton text="Продолжить"
-    /></nuxt-link>
-    <nuxt-link v-if="step === '3'" to="/gift"
+    <AccentButton v-if="step !== '3'" @click.prevent="$emit('changeStep')" text="Продолжить"/>
+    <nuxt-link v-if="step === '3'" to="/application"
       ><AccentButton text="Готово"
     /></nuxt-link>
     <nuxt-link to="/contact/telegram"

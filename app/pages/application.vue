@@ -10,7 +10,7 @@ onUnmounted(() => {
   document.body.classList.remove("special-page-active");
 });
 
-const isSuccess = ref(true)
+const isSuccess = ref(false)
 const setSuccess = () => {
   isSuccess.value = !isSuccess.value
 }

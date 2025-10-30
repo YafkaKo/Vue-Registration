@@ -17,6 +17,7 @@ export default defineNuxtConfig({
     }
   },
   routeRules: {
-    '/': { redirect: '/registration/1' },
+    '/': { redirect: '/registration?step=1' },
+    // '/registration': { redirect: '/registration?step=1' },
   }
 })

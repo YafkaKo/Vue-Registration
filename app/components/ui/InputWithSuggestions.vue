@@ -38,6 +38,7 @@ const props = defineProps<{
       v-model="inputValue"
       @focus="isOpenDataList = true"
     />
+     <transition name="suggestions">
     <div v-if="isOpenDataList && suggestions.length" class="suggestions-list">
       <div
         v-for="suggestion in suggestions"
@@ -48,12 +49,29 @@ const props = defineProps<{
         {{ suggestion }}
       </div>
     </div>
+    </transition>
     <button @click.prevent="openDataList()">
       <img
-        :class="!isOpenDataList ? '' : 'btn-img-galochka-reverse'"
+        :class="!isOpenDataList ? 'btn-img-galochka' : 'btn-img-galochka btn-img-galochka-reverse'"
         src="@/assets/images/galochka.svg"
         alt=""
       />
     </button>
   </div>
 </template>
+
+<style lang="scss" scoped>
+
+.suggestions-enter-active,
+.suggestions-leave-active {
+  transition: all 0.3s ease;
+}
+
+.suggestions-enter-from {
+  opacity: 0;
+}
+
+.suggestions-leave-to {
+  opacity: 0;
+}
+</style>

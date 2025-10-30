@@ -53,6 +53,9 @@ const animals: Animal[] = [
 let autoPlayInterval: number | null = null
 const currentAnimal = ref(0);
 const isAnimating = ref(false)
+const isDragging = ref(false)
+const dragStartX = ref(0)
+const dragOffset = ref(0)
 
 const getSlideStyle = (index: number) => {
   const diff = index - currentAnimal.value
@@ -103,7 +106,6 @@ const getSlideStyle = (index: number) => {
 
   return styles
 }
-
 const goToSlide = (index: number) => {
   if (isAnimating.value || index === currentAnimal.value) return
 
@@ -128,7 +130,6 @@ const next = () => {
   const nextIndex = findNextIndex()
   goToSlide(nextIndex)
 }
-
 const prev = () => {
   const prevIndex = findPrevIndex()
   goToSlide(prevIndex)
@@ -140,10 +141,49 @@ const handleKeydown = (event: KeyboardEvent) => {
 }
 const startAutoPlay = () => {
   return setInterval(() => {
+    if(!isDragging.value){
     next()
-  }, 3000)
+    }
+
+  }, 5000)
+}
+const startDrag = (event:MouseEvent) =>{
+  isDragging.value = true
+  dragOffset.value = 0
+
+  dragStartX.value = event.clientX
+  document.addEventListener('mousemove', handleDragMove)
+  document.addEventListener('mouseup', endDrag)
 }
 
+const handleDragMove = (event:MouseEvent)=>{
+  if(!isDragging.value) return
+  event.preventDefault()
+
+  const deltaX = event.clientX - dragStartX.value
+  const maxDrag = 300
+  dragOffset.value = Math.max(-maxDrag,Math.min(maxDrag,deltaX))
+}
+
+const endDrag = () =>{
+  if(!isDragging.value) return
+
+  isDragging.value = false
+  const dragStrong = 50
+  const dragDistance = Math.abs(dragOffset.value)
+
+  if(dragDistance > dragStrong){
+    if(dragOffset.value > 0){
+      prev()
+    } else{
+      next()
+    }
+  }
+  dragOffset.value = 0
+
+  document.removeEventListener('mousemove', handleDragMove)
+  document.removeEventListener('mouseup', endDrag)
+}
 onMounted(() => {
   document.addEventListener('keydown', handleKeydown)
   autoPlayInterval = startAutoPlay()
@@ -158,14 +198,16 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="slider-container">
-    <div class="slider-top">
+  <div class="slider-container" @mousedown="startDrag">
+    <div class="slider-top"  >
       <SliderItem
         v-for="(animal, index) in animals"
         :current-animal="currentAnimal"
         :animal="animal"
         @click.prevent="goToSlide(index)"
-        :style="getSlideStyle(index)"
+        :isDragging="isDragging"
+        :drag-offset="currentAnimal === index ? dragOffset : 0"
+        :slide-style="getSlideStyle(index)"
       />
     </div>
     <div class="slider-pagination">
@@ -193,6 +235,7 @@ onUnmounted(() => {
     width: 100%;
     max-width: 1200px;
     height: 500px;
+    overflow: hidden;
   }
   &-top {
     width: 100%;

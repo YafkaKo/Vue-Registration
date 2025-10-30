@@ -1,14 +1,28 @@
 <script lang="ts" setup>
 import type { Animal } from "~/pages/slider.vue";
+interface Props {
+  animal: Animal
+  currentAnimal: number
+  dragOffset?: number
+  isDragging?: boolean
+  slideStyle?: any
+}
+const props = withDefaults(defineProps<Props>(),{dragOffset: 0,
+  isDragging: false,
+  slideStyle: () => ({})});
 
-const props = defineProps<{ animal: Animal, currentAnimal: number }>();
+const mergedStyles = computed(() => ({
+  ...props.slideStyle,
+  transform: `${props.slideStyle.transform || ''} translateX(${props.dragOffset}px)`,
+  transition: props.isDragging ? 'none' : 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)',
+  backgroundImage: `url(${props.animal.image})`
+}))
 </script>
 <template>
   <div
-    :class="currentAnimal === props.animal.id ? 'slider-item active': 'slider-item'"
+    :class="currentAnimal === props.animal.id ? 'slider-item active unselectable': 'slider-item unselectable'"
     :key="props.animal.id"
-    :style="`background-image: url(${props.animal.image});`
-    "
+      :style='mergedStyles'
   >
     <h2 class="slider-item-title">{{ props.animal.name }}</h2>
     <p class="slider-item-subtitle">
@@ -53,5 +67,14 @@ const props = defineProps<{ animal: Animal, currentAnimal: number }>();
     border-radius: 12px;
     width: fit-content;
   }
+}
+.unselectable {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none;   /* Chrome/Safari/Opera */
+  -khtml-user-select: none;    /* Konqueror */
+  -moz-user-select: none;      /* Firefox */
+  -ms-user-select: none;       /* Internet Explorer/Edge */
+  user-select: none;           /* Non-prefixed version, currently
+                                  not supported by any browser */
 }
 </style>
